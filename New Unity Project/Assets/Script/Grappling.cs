@@ -11,7 +11,7 @@ public class Grappling : MonoBehaviour
     private Vector3 GrapplePoint;
     public LayerMask whatIsGrappleable;
     public Transform lineTip, camera,player;
-    private float maxDistance = 150f;
+    private float maxDistance = 100f;
     private SpringJoint joint;
 
     void Awake()
@@ -59,8 +59,8 @@ public class Grappling : MonoBehaviour
             joint.connectedAnchor = GrapplePoint;
             float distanceFromPoint = Vector3.Distance(player.position,GrapplePoint);
 
-            joint.maxDistance = distanceFromPoint*1f;
-            joint.minDistance= distanceFromPoint*0.5f;
+            joint.maxDistance = distanceFromPoint*0.75f;
+            joint.minDistance= distanceFromPoint*0.25f;
 
             joint.spring = 5.5f;
             joint.damper = 7f;

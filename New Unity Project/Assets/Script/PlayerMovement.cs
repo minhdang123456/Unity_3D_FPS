@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     //Wall Run
+    [Header("WallRun")]
     //public LayerMask whatIsWall;
     RaycastHit wallR, wallL;
     public float maxWallrunTime;
@@ -24,10 +25,12 @@ public class PlayerMovement : MonoBehaviour
     public GameObject lastWall;
 
     //Camera Tilting
+    [Header("Camera Tilting")]
     public float maxWallRunCameraTilt, wallRunCameraTilt;
 
 
     //Movement
+    [Header("Movement")]
     public float movingSpeed = 4500f;//Tốc độ di chuyển của người chơi
     public float maxSpeed = 20f;// cao nhất cho wall running và sliding
     public bool grounded;
@@ -43,12 +46,14 @@ public class PlayerMovement : MonoBehaviour
     Vector3 crouchScale = new Vector3(1, 0.5f, 1);
 
     //Sliding
+    [Header("Sliding")]
     public float slidingForce = 400f;
     public float slidingFriction = 0.2f;
     private Vector3 normalVector = Vector3.up;
     private Vector3 wallVector;
 
     //Jumping
+    [Header("Jumping")]
     private bool readyToJump = true;
     private float jumpCoolDown = 0.75f;
     public float jumpForce = 550f;//lực nhảy phải ít đi và cool down của nhảy phải nhiều lên
@@ -62,14 +67,16 @@ public class PlayerMovement : MonoBehaviour
     private float sensMultiply = 1f;
 
     //Climbing
+    [Header("Climbing")]
     public float climbForce, climbSpeedAdd;
     public LayerMask whatIsLadder;
     bool alreadyStoppedAtLadder;
 
-    //Input
-    public Vector3 inputDirection ;
-    bool jumping,crouching;
 
+
+    //Input
+    private Vector3 inputDirection ;
+    bool jumping,crouching;
 
     //Kiểm tra có phải tường không
     private void CheckForWall() 
@@ -174,6 +181,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce(orientation.transform.forward * slidingForce);
             }
         }
+
     }
 
 
@@ -247,6 +255,8 @@ public class PlayerMovement : MonoBehaviour
         //cho force đẩy người chơi di chuyển
         rb.AddForce(orientation.transform.forward * inputDirection.y * movingSpeed * Time.deltaTime * multiplier * multiplierV);
         rb.AddForce(orientation.transform.right * inputDirection.x * movingSpeed * Time.deltaTime * multiplier);
+
+
     }
 
 
@@ -480,7 +490,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if(lastWall != other.gameObject)
                 {
-                    Debug.Log("WallChanged");
+                    //Debug.Log("WallChanged");
                     lastWall = other.gameObject;
                     wallJumpsLeft = wallJumps;
                 }
