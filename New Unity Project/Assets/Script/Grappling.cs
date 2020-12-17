@@ -52,6 +52,7 @@ public class Grappling : MonoBehaviour
    public void StartGrapple()
     {
         RaycastHit hit;
+        //sử dụng Spherecast để có thể ngắm vào vật gần nhất
         if(Physics.SphereCast(camera.position,castRadius,camera.forward,out hit,maxDistance,whatIsGrappleable))
         {
             GrapplePoint = hit.point;
@@ -60,7 +61,7 @@ public class Grappling : MonoBehaviour
             joint.connectedAnchor = GrapplePoint;
             float distanceFromPoint = Vector3.Distance(player.position,GrapplePoint);
 
-            joint.maxDistance = distanceFromPoint*0.8f;
+            joint.maxDistance = distanceFromPoint*0.75f;
             joint.minDistance= distanceFromPoint*0.25f;
 
             joint.spring = 4.5f;
