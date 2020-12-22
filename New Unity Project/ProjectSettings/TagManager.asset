@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ladder
   - Ground
+  - bullet
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - WhatIsWall
   - Ladder
   - GrappleUI
-  - 
+  - Player
   - 
   - 
   - 
