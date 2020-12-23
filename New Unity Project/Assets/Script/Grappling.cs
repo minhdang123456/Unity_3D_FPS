@@ -13,6 +13,7 @@ public class Grappling : MonoBehaviour
     public Transform lineTip, camera,player;
     private float maxDistance = 150f;
     private SpringJoint joint;
+    private float Radius = 1.5f;
 
     void Awake()
     {
@@ -51,7 +52,7 @@ public class Grappling : MonoBehaviour
    public void StartGrapple()
     {
         RaycastHit hit;
-        if(Physics.Raycast(camera.forward,identifyHook.attachPoint,out hit,maxDistance,whatIsGrappleable))
+        if(Physics.SphereCast(camera.position,Radius,camera.forward,out hit,maxDistance,whatIsGrappleable))
         {
             GrapplePoint = hit.point;
             joint = player.gameObject.AddComponent<SpringJoint>();
@@ -59,21 +60,21 @@ public class Grappling : MonoBehaviour
             joint.connectedAnchor = GrapplePoint;
             float distanceFromPoint = Vector3.Distance(player.position,GrapplePoint);
 
-            joint.maxDistance = distanceFromPoint*1f;
-            joint.minDistance= distanceFromPoint*0.5f;
+            joint.maxDistance = distanceFromPoint*0.8f;
+            joint.minDistance= distanceFromPoint*0.25f;
 
-            joint.spring = 5.5f;
+            joint.spring = 4.5f;
             joint.damper = 7f;
-            joint.massScale = 5.5f;
+            joint.massScale = 4.5f;
 
             lr.positionCount = 2;
             currentGrapplePosition = lineTip.position;
 
         }
         GrapplePoint = identifyHook.attachPoint;
-        float step = maxDistanceDelta * Time.deltaTime;
-        currentGrapplePosition = Vector3.MoveTowards(lineTip.position, currentGrapplePosition,step);
     }
+
+   
 
     //ngưng đu dây xóa spring joint và điểm của line renderer
    public void StopGrapple()
