@@ -5,15 +5,16 @@ using UnityEngine;
 public class Grappling : MonoBehaviour
 {
     //Assignable
-    public float maxDistanceDelta;
+    [Header("Assignable")]
     public IdentifyHook identifyHook;
     private LineRenderer lr;
     private Vector3 GrapplePoint;
     public LayerMask whatIsGrappleable;
+    [Header("Assignable")]
     public Transform lineTip, camera,player;
     private float maxDistance = 150f;
     private SpringJoint joint;
-    private float Radius = 1.5f;
+    private float Radius = 2.5f;
 
     void Awake()
     {

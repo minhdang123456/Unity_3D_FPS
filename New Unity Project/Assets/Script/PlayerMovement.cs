@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Assignable")]
     // Assign những thứ quan trong như quay và camera
     public Transform playerCamera;//Camera để người chơi nhìn thấy
     public Transform orientation;// Cho người chơi quay được
@@ -15,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Wall Run
     //public LayerMask whatIsWall;
+    [Header("Wall Run")]
     RaycastHit wallR, wallL;
     public float maxWallrunTime;
     public float wallrunForce, wallRunUpwardForce, maxWallSpeed;
@@ -25,16 +27,19 @@ public class PlayerMovement : MonoBehaviour
     public GameObject lastWall;
 
     //Camera Tilting
+    [Header("Camera Tilting")]
     public float maxWallRunCameraTilt, wallRunCameraTilt;
 
 
     //Movement
+    [Header("Movement")]
     public float movingSpeed = 4500f;//Tốc độ di chuyển của người chơi
     public float maxSpeed = 20f;// cao nhất cho wall running và sliding
     public bool grounded;
     public LayerMask whatIsGround;
 
     //CounterMovement
+    [Header("Counter Movement. Warning: Không thay đổi attributes trong đây nó dùng để giúp nhân vật không slide")]
     public float Friction = 0.175f;
     private float threshold = 0.01f;
     public float maxSlopeAngle = 35f;
@@ -44,12 +49,14 @@ public class PlayerMovement : MonoBehaviour
     Vector3 crouchScale = new Vector3(1, 0.5f, 1);
 
     //Sliding
+    [Header("Sliding")]
     public float slidingForce = 400f;
     public float slidingFriction = 0.2f;
     private Vector3 normalVector = Vector3.up;
     private Vector3 wallVector;
 
     //Jumping
+    [Header("Jump")]
     private bool readyToJump = true;
     private float jumpCoolDown = 0.75f;
     public float jumpForce = 550f;//lực nhảy phải ít đi và cool down của nhảy phải nhiều lên
@@ -63,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
     private float sensMultiply = 1f;
 
     //Climbing
+    [Header("Climb")]
     public float climbForce, climbSpeedAdd;
     public LayerMask whatIsLadder;
     bool alreadyStoppedAtLadder;
@@ -372,7 +380,7 @@ public class PlayerMovement : MonoBehaviour
         orientation.transform.localRotation = Quaternion.Euler(0, Xfov, 0);
 
 
-        //Quay Camera khiwall run
+        //Quay Camera khi wall run
         if(Mathf.Abs(wallRunCameraTilt)<maxWallRunCameraTilt && isWallRunning&&isWallRight)
         {
             wallRunCameraTilt += Time.deltaTime * maxWallRunCameraTilt * 2;

@@ -5,16 +5,18 @@ using UnityEngine.UI;
 
 public class IdentifyHook : MonoBehaviour
 {
+    //Assignable
+    [Header("Assignable")]
     GameObject player;
 
     RaycastHit sphereCastInfo;
     [HideInInspector] public bool found;
-
+    [Header("Distance")]
     public float maxDistance = 60f;
 
     [HideInInspector] public Vector3 attachPoint;
 
-
+    [Header("Assignable")]
     public Image attachPointCrosshair;
     public RectTransform canvasRect;
 
