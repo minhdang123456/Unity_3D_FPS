@@ -14,7 +14,7 @@ public class Grappling : MonoBehaviour
     public Transform lineTip, camera,player;
     private float maxDistance = 150f;
     private SpringJoint joint;
-    private float Radius = 2.5f;
+    private float Radius = 3f;
 
     void Awake()
     {
