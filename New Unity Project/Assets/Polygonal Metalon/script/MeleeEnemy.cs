@@ -33,7 +33,7 @@ public class MeleeEnemy : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponent<Animator>();
         anim.speed = 1f;
     }
     private void Update()
