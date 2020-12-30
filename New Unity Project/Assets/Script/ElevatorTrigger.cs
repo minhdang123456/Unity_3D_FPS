@@ -4,18 +4,31 @@ using UnityEngine;
 
 public class ElevatorTrigger : MonoBehaviour
 {
-    [SerializeField] private ElevatorAnimation elevator;
+    [SerializeField] private GameObject elevator;
+    [SerializeField] private GameObject player;
 
-    private void Update()
+    private IElevator IE;
+    private Rigidbody rb;
+
+    private void Awake(){
+        IE = elevator.GetComponent<IElevator>();
+        rb = player.GetComponent<Rigidbody>();
+    }
+
+    private void OnTriggerEnter(Collider collider)
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if(collider.GetComponent<Rigidbody>()!=null)
         {
-            elevator.Up();
+            IE.Up();
+            
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.R))
+    private void OnTriggerExit(Collider collider)
+    {
+        if(collider.GetComponent<Rigidbody>()!=null)
         {
-            elevator.Down();
+            IE.Down();
         }
     }
 }

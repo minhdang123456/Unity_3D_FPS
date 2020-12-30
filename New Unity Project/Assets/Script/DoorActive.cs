@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorActive : MonoBehaviour
+public class DoorActive : MonoBehaviour, IDoor
 {
     public void OpenDoor()
     {

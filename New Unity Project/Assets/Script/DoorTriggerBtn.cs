@@ -4,18 +4,29 @@ using UnityEngine;
 
 public class DoorTriggerBtn : MonoBehaviour
 {
-    [SerializeField] private DoorAnimation door;
+    [SerializeField] private GameObject door;
+    [SerializeField] private GameObject player;    
 
-    private void Update()
+    private IDoor doorA;
+    private Rigidbody rb;
+    private void Awake(){
+        doorA = door.GetComponent<IDoor>();
+        rb=player.GetComponent<Rigidbody>();
+    }
+
+    private void OnTriggerEnter(Collider collider)
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if(collider.GetComponent<Rigidbody>()!=null)
         {
-            door.OpenDoor();
+            doorA.OpenDoor();
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.F))
+    private void OnTriggerExit(Collider collider)
+    {
+        if(collider.GetComponent<Rigidbody>()!=null)
         {
-            door.CloseDoor();
+            doorA.CloseDoor();
         }
     }
 }

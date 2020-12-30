@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElevatorAnimation : MonoBehaviour
+public class ElevatorAnimation : MonoBehaviour,IElevator
 {
     private Animator animator;
    
@@ -11,7 +11,7 @@ public class ElevatorAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Origin()
+    public void Origin()
     {
         animator.SetBool("Origin",true);
     }

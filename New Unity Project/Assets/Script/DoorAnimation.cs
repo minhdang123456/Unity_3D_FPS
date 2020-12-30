@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorAnimation : MonoBehaviour
+public class DoorAnimation : MonoBehaviour, IDoor
 {
     private Animator animator;
     private void Awake()
