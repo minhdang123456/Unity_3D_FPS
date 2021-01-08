@@ -76,8 +76,8 @@ public class PlayerMovement : MonoBehaviour
     bool alreadyStoppedAtLadder;
 
     //Input
-    public Vector3 inputDirection ;
-    bool jumping,crouching;
+    private Vector3 inputDirection;
+    bool jumping,crouching,sliding;
 
 
     //Kiểm tra có phải tường không
@@ -181,8 +181,10 @@ public class PlayerMovement : MonoBehaviour
             if (grounded)
             {
                 rb.AddForce(orientation.transform.forward * slidingForce);
+                sliding = true;
             }
         }
+        
     }
 
 
@@ -191,6 +193,7 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.localScale = playerScale;
         transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        sliding = false;
     }
 
 
@@ -243,14 +246,15 @@ public class PlayerMovement : MonoBehaviour
         //di chuyển khi trên không
         if (!grounded)
         {
-            multiplier = 0.5f;
-            multiplierV = 0.5f;
+            multiplier = 1f;
+            multiplierV = 1f;
         }
 
         // tốc độ di chuyển khi slide
-        if (grounded && crouching)
+        if (crouching && grounded)
         {
-            multiplierV = 0f;
+            multiplierV = 3f;
+            multiplier = 3f;
         }
 
         //cho force đẩy người chơi di chuyển
