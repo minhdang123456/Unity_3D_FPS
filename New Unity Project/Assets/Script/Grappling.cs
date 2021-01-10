@@ -10,11 +10,15 @@ public class Grappling : MonoBehaviour
     private LineRenderer lr;
     private Vector3 GrapplePoint;
     public LayerMask whatIsGrappleable;
+
     [Header("Assignable")]
     public Transform lineTip, camera,player;
     private float maxDistance = 150f;
     private SpringJoint joint;
     private float Radius = 3f;
+    
+
+
 
     void Awake()
     {
@@ -73,12 +77,15 @@ public class Grappling : MonoBehaviour
 
         }
         GrapplePoint = identifyHook.attachPoint;
+
+        
+
     }
 
-   
+
 
     //ngưng đu dây xóa spring joint và điểm của line renderer
-   public void StopGrapple()
+    public void StopGrapple()
     {
             lr.positionCount = 0;
             Destroy(joint);
@@ -101,11 +108,14 @@ public class Grappling : MonoBehaviour
     {
         return joint != null;
     }
-    
+
 
     //lấy điểm để có đu được
     public Vector3 GetGrapplePoint()
     {
         return GrapplePoint;
     }
+
+    
+
 }
