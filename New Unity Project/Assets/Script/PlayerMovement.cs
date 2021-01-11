@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
     bool alreadyStoppedAtLadder;
 
     //Input
-    private Vector3 inputDirection;
+    public Vector3 inputDirection;
     bool jumping,crouching,sliding;
 
 

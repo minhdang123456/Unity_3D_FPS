@@ -34,7 +34,7 @@ public class IdentifyHook : MonoBehaviour
     void Update()
     {
         Vector3 sphereCastOrigin = new Vector3(player.transform.position.x,player.transform.position.y+1f,player.transform.position.z+1f);
-        bool hitSomething = Physics.SphereCast(sphereCastOrigin,2f,transform.forward,out sphereCastInfo,maxDistance);
+        bool hitSomething = Physics.SphereCast(sphereCastOrigin,3.5f,transform.forward,out sphereCastInfo,maxDistance);
         if(hitSomething && sphereCastInfo.collider.tag=="Ground" && Vector3.Distance(player.transform.position, sphereCastInfo.point) > 5f)
         {
             found = true;

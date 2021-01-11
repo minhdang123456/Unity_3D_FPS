@@ -15,7 +15,7 @@ public class Grappling : MonoBehaviour
     public Transform lineTip, camera,player;
     private float maxDistance = 150f;
     private SpringJoint joint;
-    private float Radius = 3f;
+    private float Radius = 4.5f;
     
 
 
@@ -68,9 +68,9 @@ public class Grappling : MonoBehaviour
             joint.maxDistance = distanceFromPoint*0.8f;
             joint.minDistance= distanceFromPoint*0.25f;
 
-            joint.spring = 4.5f;
+            joint.spring = 3.5f;
             joint.damper = 7f;
-            joint.massScale = 4.5f;
+            joint.massScale = 3.5f;
 
             lr.positionCount = 2;
             currentGrapplePosition = lineTip.position;
